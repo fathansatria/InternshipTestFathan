@@ -1,0 +1,15 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="list">list</string>
+    <string name="gallery">Gallery</string>
+    <string name="profile">Profile</string>
+    <string name="internship_test_fathan">Internship Test Fathan</string>
+    <string name="menu_list">List</string>
+    <string name="detail_single">Detail Single</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="detail_gallery">Detail Gallery</string>
+    <string name="menu_profile">Profile</string>
+    <string name="detail_multiple">Detail Multiple</string>
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="place"
+            type="com.example.internshiptestfathan.menu.list.viewmodels.ItemSingleViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/list_place_padding"
+        android:paddingLeft="@dimen/list_place_padding"
+        android:paddingRight="@dimen/list_place_padding">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_single_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_image_height"
+            android:scaleType="centerCrop"
+            app:setImageUrl="@{place.imageUrl}"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginTop="@dimen/list_place_padding"
+            android:textSize="@dimen/text_bold"
+            android:textStyle="bold"
+            android:text="@{place.title}"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_subtitle_single"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_normal"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@{place.content}"/>
+
+
+
+    </LinearLayout>
+
+</layout>
+

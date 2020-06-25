@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="gallery"
+            type="com.example.internshiptestfathan.menu.gallery.viewmodels.GalleryDetailViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- image -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_image_height"
+            android:scaleType="centerCrop"
+            app:setImageUrl="@{gallery.imageUrl}"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"/>
+
+
+
+        <!-- caption -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/list_place_padding"
+            android:layout_marginLeft="@dimen/list_place_padding"
+            android:layout_marginRight="@dimen/list_place_padding"
+            android:text="@{gallery.caption}"
+            android:textSize="@dimen/text_normal"
+            tools:text="@tools:sample/lorem"/>
+
+
+    </LinearLayout>
+
+</layout>

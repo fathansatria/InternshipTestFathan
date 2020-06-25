@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/fragmentList">
+
+    <!-- fragment list -->
+    <fragment
+        android:id="@+id/fragmentList"
+        android:label="@string/menu_list"
+        android:name="com.example.internshiptestfathan.menu.list.views.FragmentMain"
+        tools:layout="@layout/fragment_main">
+
+        <action android:id="@+id/actionToFragmentSingleDetail"
+            app:destination="@+id/fragmentSingleDetail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"/>
+
+        <action android:id="@+id/actionToFragmentMultipleDetail"
+            app:destination="@+id/fragmentMultipleDetail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"/>
+
+    </fragment>
+
+    <!-- fragment single detail -->
+    <fragment
+        android:id="@+id/fragmentSingleDetail"
+        android:label="@string/detail_single"
+        android:name="com.example.internshiptestfathan.menu.list.views.FragmentSingleDetail"
+        tools:layout="@layout/fragment_single_detail">
+
+        <argument android:name="dataPlace"
+            app:argType="com.example.internshiptestfathan.menu.list.models.PlaceModel"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+    </fragment>
+
+    <!-- fragment multiple detail -->
+    <fragment
+        android:id="@+id/fragmentMultipleDetail"
+        android:label="@string/detail_multiple"
+        android:name="com.example.internshiptestfathan.menu.list.views.FragmentMultipleDetail"
+        tools:layout="@layout/fragment_multiple_detail">
+
+        <argument android:name="dataPlace"
+            app:argType="com.example.internshiptestfathan.menu.list.models.PlaceModel"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+    </fragment>
+
+    <!-- fragment gallery -->
+    <fragment
+        android:id="@+id/fragmentGallery"
+        android:label="@string/menu_gallery"
+        android:name="com.example.internshiptestfathan.menu.gallery.views.FragmentGallery"
+        tools:layout="@layout/fragment_gallery">
+
+        <action android:id="@+id/actionToFragmentGalleryDetail"
+            app:destination="@+id/fragmentGalleryDetail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"/>
+
+    </fragment>
+
+    <!-- fragment gallery detail -->
+    <fragment
+        android:id="@+id/fragmentGalleryDetail"
+        android:label="@string/detail_gallery"
+        android:name="com.example.internshiptestfathan.menu.gallery.views.FragmentGalleryDetail"
+        tools:layout="@layout/fragment_gallery_detail">
+
+        <argument android:name="dataGallery"
+            app:argType="com.example.internshiptestfathan.menu.gallery.models.GalleryModel"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+    </fragment>
+
+    <!-- fragment profile -->
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:label="@string/menu_profile"
+        android:name="com.example.internshiptestfathan.menu.profile.views.FragmentProfile"
+        tools:layout="@layout/fragment_profile"
+        />
+
+</navigation>
