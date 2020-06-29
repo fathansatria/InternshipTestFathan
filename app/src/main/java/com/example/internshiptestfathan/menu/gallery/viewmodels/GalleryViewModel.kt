@@ -1,34 +1,26 @@
 package com.example.internshiptestfathan.menu.gallery.viewmodels
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.internshiptestfathan.data.db.DbGalleryRepository
 import com.example.internshiptestfathan.menu.gallery.models.GalleryModel
 import com.example.internshiptestfathan.network.repositories.GalleryRepository
 
-class GalleryViewModel : ViewModel() {
+class GalleryViewModel(context: Context) : ViewModel() {
 
     var listGallery: MutableLiveData<MutableList<GalleryModel>> = MutableLiveData()
     private val galleryRepository = GalleryRepository(viewModelScope)
+    private val dbGalleryRepository = DbGalleryRepository(context)
     var isLoading: ObservableBoolean = ObservableBoolean()
 
 
     fun getGalleryData(){
-        galleryRepository.getGallery({
-
-            isLoading.set(true)
-            Log.i("DATA", it.toString())
+        dbGalleryRepository.getGalleries {
             listGallery.postValue(it)
-            isLoading.set(false)
-
-
-        },{
-            //Log.e("Gallery", it.message)
         }
-        )
     }
 
 }

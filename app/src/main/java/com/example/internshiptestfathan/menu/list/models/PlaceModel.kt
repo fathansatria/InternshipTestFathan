@@ -2,12 +2,15 @@ package com.example.internshiptestfathan.menu.list.models
 
 import android.os.Parcelable
 import androidx.annotation.Keep
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
+@Entity(tableName = "places")
 data class PlaceModel(
-    val id: Int?,
+    @PrimaryKey val id: Int,
     val title: String?,
     val content: String?,
     val type: String?,

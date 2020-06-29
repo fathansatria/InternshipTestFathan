@@ -1,5 +1,6 @@
 package com.example.internshiptestfathan.menu.gallery.views
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.internshiptestfathan.databinding.FragmentGalleryBinding
 import com.example.internshiptestfathan.menu.gallery.adapters.GalleryAdapter
 import com.example.internshiptestfathan.menu.gallery.viewmodels.GalleryViewModel
+import com.example.internshiptestfathan.utils.ViewModelFragmentFactory
 
 class FragmentGallery : Fragment() {
 
-    private val viewModel: GalleryViewModel by viewModels()
+    private val viewModel: GalleryViewModel by viewModels{ ViewModelFragmentFactory(context as Context) }
     private lateinit var binding :FragmentGalleryBinding
     private lateinit var galleryAdapter :GalleryAdapter
 
@@ -36,7 +38,6 @@ class FragmentGallery : Fragment() {
         setupRecyclerView()
         observeData()
     }
-
 
 
     private fun setupRecyclerView(){

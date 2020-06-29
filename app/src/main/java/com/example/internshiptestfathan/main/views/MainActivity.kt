@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
         binding.lifecycleOwner = this
 
-
         setSupportActionBar(binding.toolbarMain)
         setupNavigation()
 
