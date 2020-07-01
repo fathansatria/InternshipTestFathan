@@ -1,8 +1,6 @@
 package com.example.internshiptestfathan.menu.gallery.viewmodels
 
-import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.*
 import com.example.internshiptestfathan.data.db.DbGalleryRepository
