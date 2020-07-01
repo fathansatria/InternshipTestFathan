@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.internshiptestfathan.R
 import com.example.internshiptestfathan.databinding.ActivitySplashBinding
+import kotlinx.coroutines.*
+
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
@@ -24,29 +26,12 @@ class SplashActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
         binding.splash = viewModel
 
-//        Handler().postDelayed(Runnable {
-//            val main = Intent(this, MainActivity::class.java)
-//            startActivity(main)
-//            finish()
-//        }, 2000)
+        GlobalScope.launch(Dispatchers.Main){
+            viewModel.getData().join()
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
+        }
 
-        viewModel.getGallery()
-        viewModel.getPlaces()
 
-        observeData()
-    }
-
-    private fun observeData() {
-        viewModel.isGalleriesDone.observe(this, Observer { galleryDone ->
-            if (galleryDone) {
-                viewModel.isPlaceDone.observe(this, Observer { placeDone ->
-                    if(placeDone){
-                        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                        finish()
-                    }
-                })
-
-            }
-        })
     }
 }

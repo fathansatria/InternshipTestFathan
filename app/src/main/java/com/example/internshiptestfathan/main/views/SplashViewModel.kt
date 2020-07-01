@@ -8,6 +8,9 @@ import com.example.internshiptestfathan.data.db.DbGalleryRepository
 import com.example.internshiptestfathan.data.db.DbPlaceRepository
 import com.example.internshiptestfathan.network.repositories.GalleryRepository
 import com.example.internshiptestfathan.network.repositories.PlaceRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class SplashViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -37,5 +40,15 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
         },{
             //logError("SplashViewModel # failed get posts")
         })
+    }
+
+    fun getData() : Job{
+
+        return viewModelScope.launch(Dispatchers.Default) {
+            getPlaces()
+            getGallery()
+
+        }
+
     }
 }

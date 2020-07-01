@@ -2,30 +2,26 @@ package com.example.internshiptestfathan.data.db
 
 import androidx.room.TypeConverter
 import com.example.internshiptestfathan.menu.list.models.PlaceModel
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 
 class Converter {
 
+    private val moshi = Moshi.Builder().build()
+    private val type = Types.newParameterizedType(MutableList::class.java, PlaceModel::class.java)
+
     @TypeConverter
     fun fromMutableList(value: MutableList<PlaceModel>?): String{
-        return Gson().toJson(value)
+        val adapter : JsonAdapter<MutableList<PlaceModel>> = moshi.adapter(type)
+        val data = adapter.toJson(value)
+        return data
     }
 
     @TypeConverter
-    fun toMutableList(value: String): MutableList<PlaceModel>{
-        val mutableListType = object : TypeToken<MutableList<PlaceModel>>(){}.type
-        return Gson().fromJson(value, mutableListType)
-    }
-
-    @TypeConverter
-    fun toString(value: MutableList<String?>?): String{
-        return Gson().toJson(value)
-    }
-
-    @TypeConverter
-    fun fromString(value: String): MutableList<String?>{
-        val mutableListType = object : TypeToken<MutableList<String?>?>(){}.type
-        return Gson().fromJson(value, mutableListType)
+    fun toMutableList(value: String): MutableList<PlaceModel>?{
+        val adapter : JsonAdapter<MutableList<PlaceModel>> = moshi.adapter(type)
+        val data : MutableList<PlaceModel>? = adapter.fromJson(value)
+        return data
     }
 }
