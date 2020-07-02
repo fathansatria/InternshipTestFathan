@@ -3,6 +3,7 @@ package com.example.internshiptestfathan.main.views
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -27,9 +28,16 @@ class SplashActivity : AppCompatActivity() {
         binding.splash = viewModel
 
         GlobalScope.launch(Dispatchers.Main){
-            viewModel.getData().join()
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-            finish()
+            try{
+                viewModel.getData().join()
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                finish()
+            }
+            catch (throwable : Throwable){
+                if (throwable !is CancellationException) {
+                    Log.e("Job", "Errors")
+                }
+            }
         }
 
 
